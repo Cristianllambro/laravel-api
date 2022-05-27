@@ -4,9 +4,9 @@
         <div class="col-4" v-for="item in posts" :key="item.id">
             <div class="card h-100">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{item.title}}</h5>
+                    <h3 class="card-title">{{item.title}}</h3>
                     <span class="card-text">{{item.description}}</span>
-                    <router-link :to="{name: 'PostDetail', params: {slug: item.slug} }" class="btn btn-primary mt-auto">Info Post</router-link>
+                    <router-link :to="{name: 'postDetail', params: {slug: item.slug} }" class="btn btn-primary mt-auto">Info Post</router-link>
                 </div>
             </div>
         </div>
@@ -19,8 +19,6 @@ export default {
     data() {
         return {
             posts: [],
-            previousPage: '',
-            nextPage: '',
         }
     },
 

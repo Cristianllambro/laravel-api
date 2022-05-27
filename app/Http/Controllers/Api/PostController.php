@@ -18,16 +18,16 @@ class PostController extends Controller
 
         //richiesta per 6 post con il controllo per la home
         $data = $request->all();
-        if (array_key_exist('home', $data)) {
-            return respondse()->json([
+        if (array_key_exists('home', $data)) {
+            return response()->json([
                 'success' => true,
                 'response' =>[
-                    'data' => Post::inRandomOrder()->limit(4)->get(),
+                    'data' => Post::inRandomOrder()->limit(3)->get(),
                 ]        
             ]);
         }
 
-        $element = $this->composerQuery($request);
+        $element = $this->composeQuery($request);
 
         // richiesta per tutti i post
         $element = $element->with(['user', 'category', 'tags'])->paginate(20);

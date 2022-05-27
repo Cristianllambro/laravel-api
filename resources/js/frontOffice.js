@@ -14,28 +14,28 @@ import PostDetail from './pages/PostDetail';
 
 Vue.use(VueRouter);
 
-const route = new VueRouter({
+const router = new VueRouter({
     mode: 'history',
     routes: [
         {
             path: '/',
-            name: 'Home',
-            components: HomePage,
+            name: 'home',
+            component: HomePage,
         },
         {
             path: '/about',
             name: 'about',
-            components: AboutPage,
+            component: AboutPage,
         },
         {
             path: '/blog',
             name: 'blogIndex',
-            components: BlogIndex,
+            component: BlogIndex,
         },
         {
             path: '/blog/:slug',
             name: 'postDetail',
-            components: PostDetail,
+            component: PostDetail,
         },
     ]
 })
@@ -43,5 +43,5 @@ const route = new VueRouter({
 const app = new Vue({
     el: '#app',
     render: h=> h(App),
-    route,
+    router,
 });
