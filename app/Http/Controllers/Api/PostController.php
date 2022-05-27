@@ -13,11 +13,26 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $element = Post::paginate(20);
+
+        //richiesta per 6 post con il controllo per la home
+        $data = $request->all();
+        if (array_key_exist('home', $data)) {
+            return respondse()->json([
+                'success' => true,
+                'response' =>[
+                    'data' => Post::inRandomOrder()->limit(4)->get(),
+                ]        
+            ]);
+        }
+
+        $element = $this->composerQuery($request);
+
+        // richiesta per tutti i post
+        $element = $element->with(['user', 'category', 'tags'])->paginate(20);
         return response()->json([
-            'status' => 'success',
+            'success' => true,
             'response' => $element,
         ]);
     }
@@ -49,9 +64,24 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $element = Post::with(['user', 'category', 'tags'])->where('slug', $slug)->first();
+        if($element) {
+            return response()->json([
+                'success' => true,
+                'response' => [
+                    'data' => $element,
+                ]
+            ]);
+        }else{
+            return response()->json([
+                'success' => false,
+                'response' => [
+                    'data' => 'Post not found',
+                ]
+            ]);
+        }
     }
 
     /**
