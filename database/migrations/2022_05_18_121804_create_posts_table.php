@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title', 100);
             $table->text('description');
             $table->string('slug', 100)->unique();
+            $table->string('postImg')->nullable();
             $table->timestamps();
 
             // identifico la chiave esterna della tabella users

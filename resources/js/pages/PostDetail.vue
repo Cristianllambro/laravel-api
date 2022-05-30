@@ -5,6 +5,7 @@
         <div>
             <span v-for="tag in item.tags" :key="tag.id">{{tag.name}}</span>
         </div>
+        <img :src="item.img_url" :alt="item.title" class="img-fluid">
         <p>{{item.description}}</p>
     </div>
 </template>

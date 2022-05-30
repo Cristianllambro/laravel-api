@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form method="POST" action="{{ route('admin.posts.store')}}">
+            <form method="POST" action="{{ route('admin.posts.store')}}" enctype="multipart/form-data">
                 @csrf
 
                 {{-- TITLE --}}
@@ -26,6 +26,13 @@
                         <option value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach
                 </select>
+
+
+                {{-- ADD IMAGE --}}
+                <div class="mb-3">
+                    <label for="postImg" class="form-label">Add image</label>
+                    <input type="file" class="form-control" id="postImg" name="postImg" accept="image/*">
+                </div>
 
 
                 {{-- SLUG --}}

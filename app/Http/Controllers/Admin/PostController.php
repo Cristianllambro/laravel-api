@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Routing\Route;
+use Illuminate\Support\facades\Storage;
 
 class PostController extends Controller
 {
@@ -94,9 +95,16 @@ class PostController extends Controller
         $data = $request->validate($this->getValidator(null));
 
         //new post unito all'utente loggato con il suo id (aggiungere user_id nel fillable)
-        $newPost  = $request->all() + ['user_id' => Auth::user()->id]; //unione post con l'id utente
+        $dataRequest = $request->all();
         $element = Post::create($newPost);
+        
+        //aggiunto il carimento delle immagini
+        $img_path = Storage::put('uploads', $dataRequest['postImg']);
         $element->tags()->attach($newPost['itemTag']); //collegamente tag con id
+        $newPost  = [
+            'user_id' => Auth::user()->id,
+            'postImg' => $img_path,
+        ] + $dataRequest; //unione post con l'id utente
         return redirect()->route('admin.posts.show', $element->slug);
     }
 
