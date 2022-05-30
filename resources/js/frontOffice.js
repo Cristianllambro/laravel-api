@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import BlogIndex from './pages/BlogIndex';
 import PostDetail from './pages/PostDetail';
+import ContactPage from './pages/ContactPage';
 
 Vue.use(VueRouter);
 
@@ -36,6 +37,11 @@ const router = new VueRouter({
             path: '/blog/:slug',
             name: 'postDetail',
             component: PostDetail,
+        },
+        {
+            path: '/contact',
+            name: 'contact',
+            component: ContactPage,
         },
     ]
 })

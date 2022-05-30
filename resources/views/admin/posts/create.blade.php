@@ -51,14 +51,14 @@
                 @error('content')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-                <div class="form-floating">
+                <div class="mb-3">
                     <label for="description">{{ __('Content') }}</label>
-                    <textarea class="form-control" placeholder="Description" id="description" name="description">{{old('description')}}</textarea>
+                    <textarea class="form-control" id="description" name="description">{{old('description')}}</textarea>
                 </div>
 
                 {{-- TAGS  --}}
                 <div class="col">
-                    <h2>Tags:</h2>
+                    <p class="pt-3">Tags:</p>
                     @foreach ($itemTag as $item)
                         <input type="checkbox" name="itemTag[]" id="tag-{{$item->id}}" value="{{$item->id}}"
                         {{-- se l'id e' contenuto nei tag allora mette checked --}}

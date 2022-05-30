@@ -8,7 +8,7 @@
                 <h2 class="card-title">Title: {{$post->title}}</h2>
                 <h4>{{$post->category->name}}</h4>
                 <span class="text-uppercase">{{$post->user->name}}</span> - <span class="text-uppercase">{{$post->user->userInfo->address}}</span>
-                <img src="{{asset('storage/' . $post->postImg)}}" alt="{{$post->title}}">
+                <img src="{{asset('storage/' . $post->postImg)}}" alt="{{$post->title}}" class="img-fluid">
                 <p class="card-text">Description: {{$post->description}}</p>
                 <p class="card-text">Slug: {{$post->slug}}</p>
                 <p class="card-text">Tags: {{$post->tags->pluck('name')->join(', ')}}</p>

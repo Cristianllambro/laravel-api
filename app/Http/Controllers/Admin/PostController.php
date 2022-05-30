@@ -92,19 +92,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate($this->getValidator(null));
+        $request->validate($this->getValidator(null));
 
         //new post unito all'utente loggato con il suo id (aggiungere user_id nel fillable)
-        $dataRequest = $request->all();
-        $element = Post::create($newPost);
-        
+        $data = $request->all();
+        // dd($data);
         //aggiunto il carimento delle immagini
-        $img_path = Storage::put('uploads', $dataRequest['postImg']);
-        $element->tags()->attach($newPost['itemTag']); //collegamente tag con id
+        $img_path = Storage::put('uploads', $data['postImg']);
+        
         $newPost  = [
             'user_id' => Auth::user()->id,
             'postImg' => $img_path,
-        ] + $dataRequest; //unione post con l'id utente
+            ] + $data; //unione post con l'id utente + immagine
+            
+            $element = Post::create($newPost);
+            $element->tags()->attach($newPost['itemTag']); //collegamente tag con id
         return redirect()->route('admin.posts.show', $element->slug);
     }
 
