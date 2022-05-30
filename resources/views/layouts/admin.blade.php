@@ -9,8 +9,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <x-navbar />
-    @yield('content')
-    @include('partials.footer')
+    <div class="container">
+        <x-navbar />
+        @yield('content')
+        @include('partials.footer')
+    </div>
 </body>
 </html>

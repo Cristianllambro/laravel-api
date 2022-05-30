@@ -45165,13 +45165,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 1:
-/*!****************************************!*\
-  !*** multi ./resources/js/frontOffice ***!
-  \****************************************/
+/*!*******************************************!*\
+  !*** multi ./resources/js/frontOffice.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\boolean1\laravel-api\resources\js\frontOffice */"./resources/js/frontOffice.js");
+module.exports = __webpack_require__(/*! D:\boolean1\laravel-api\resources\js\frontOffice.js */"./resources/js/frontOffice.js");
 
 
 /***/ })
